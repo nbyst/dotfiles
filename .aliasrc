@@ -64,6 +64,13 @@ alias gst="git stash "
 alias gstl="git stash list | cat"
 alias gsts="git stash save"
 alias gstp="git stash pop"
+gstd() {
+  echo 'Are you sure you want to # git stash drop ? [y/n]'
+  read y_or_n
+  [ "$y_or_n" = "y" ] && git stash drop
+  #[ "$y_or_n" = "y" ] && git stash drop $@ 未確認なのでgit stash dropの引数指定は未対応
+}
+alias gstv="git stash show -v"
 alias getbranch="git branch | grep \"*\" | awk '{print \$2}'"
 alias sgrh="sudo git reset --hard HEAD"
 alias sgc="sudo git checkout"
